@@ -1,0 +1,16 @@
+name: Geo
+main: com.wwsean08.locator.Locator
+version: 1.0.1
+website: www.wwsean08.com
+author: wwsean08
+description: A plugin to geolocate players via their ip address
+
+commands:
+   geo:
+      description: This will display the country that the player appears to be connecting from. This could be changed via proxys or other means.
+      usage: /<command> <playerName>
+
+permissions:
+    locator.geoLocate:
+        description: allows the player to use the geo command
+        default: OP

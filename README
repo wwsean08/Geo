@@ -1,0 +1,10 @@
+This plugin displays the country of a player based off of their ip address upon an admin using the command.
+
+Features:
+Looks up a player's location via their IP address
+
+Change Log
+    V1.0.2: Initial public release, what you see is what you get. 
+
+Command
+/geo <playerName> - This displays the geolocation results of a player if you have permission to use the command.
