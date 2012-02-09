@@ -24,7 +24,7 @@ public class LocatorRunnable implements Runnable{
 	}
 	@Override
 	public void run() {
-		if(Bukkit.getServer().matchPlayer(name) !=null){
+		if(Bukkit.getServer().matchPlayer(name).size() > 0){
 			final Player player = Bukkit.getServer().matchPlayer(name).get(0);
 			String request = lookup + player.getAddress().getAddress().getHostAddress();
 			try {
