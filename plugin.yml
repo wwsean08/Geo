@@ -1,6 +1,6 @@
 name: Geo
 main: com.wwsean08.locator.Locator
-version: 1.0.3
+version: 1.0.4
 website: www.wwsean08.com
 author: wwsean08
 description: A plugin to geolocate players via their ip address
