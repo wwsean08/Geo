@@ -44,9 +44,9 @@ public class LocatorRunnable implements Runnable{
 						if (country) {
 							String location = new String(ch, start, length);
 							if(sender == null){
-								Bukkit.getServer().getLogger().info(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address");
+								Bukkit.getServer().getLogger().info(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address, " + player.getAddress().getAddress().getHostAddress());
 							}else
-								Bukkit.getPlayer(sender).sendMessage(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address");
+								Bukkit.getPlayer(sender).sendMessage(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address, " + player.getAddress().getAddress().getHostAddress());
 							country = false;
 						}
 					}
