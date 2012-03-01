@@ -7,6 +7,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -15,10 +16,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class LocatorRunnable implements Runnable{
 	String name;
-	String sender;
+	CommandSender sender;
 	private final String key = "get your own";
 	private final String lookup = "http://api.ipinfodb.com/v3/ip-country/?key=" + key + "&format=xml&ip="; 
-	public LocatorRunnable(String playerName, String senderName){
+	public LocatorRunnable(String playerName, CommandSender senderName){
 		name = playerName;
 		sender = senderName;
 	}
@@ -43,10 +44,7 @@ public class LocatorRunnable implements Runnable{
 					public void characters(char ch[], int start, int length) throws SAXException {
 						if (country) {
 							String location = new String(ch, start, length);
-							if(sender == null){
-								Bukkit.getServer().getLogger().info(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address, " + player.getAddress().getAddress().getHostAddress());
-							}else
-								Bukkit.getPlayer(sender).sendMessage(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address, " + player.getAddress().getAddress().getHostAddress());
+							sender.sendMessage(ChatColor.GRAY + player.getName() + " is located in " + location.toLowerCase() + " according to their ip address, " + player.getAddress().getAddress().getHostAddress());
 							country = false;
 						}
 					}
@@ -56,9 +54,6 @@ public class LocatorRunnable implements Runnable{
 				e.printStackTrace();
 			}
 		}else
-			if(sender == null)
-				Bukkit.getServer().getLogger().info(ChatColor.GRAY + "There is no player by the name of " + name);
-			else
-				Bukkit.getPlayer(sender).sendMessage(ChatColor.GRAY + "There is no player by the name of " + name);
+			sender.sendMessage(ChatColor.GRAY + "There is no player by the name of " + name);
 	}
 }
