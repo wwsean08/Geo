@@ -25,9 +25,9 @@ public class Locator extends JavaPlugin{
 			if(sender instanceof Player){
 				Player player = (Player) sender;
 				if(player.hasPermission("Geo.geoLocate"))
-					geoLocate(args[0], sender);
+					geoLocate(this, args[0], sender);
 			}else if(sender instanceof ConsoleCommandSender)
-				geoLocate(args[0], sender);
+				geoLocate(this, args[0], sender);
 		}
 		return true;
 	}
@@ -37,11 +37,11 @@ public class Locator extends JavaPlugin{
 	 * @param sender the person who sent the command
 	 */
 	private void geoLocate(String playerName, final CommandSender sender){
-		LocatorRunnable runnable;
+		LocatorAsyncCall runnable;
 		if(sender == null){
-			runnable = new LocatorRunnable(playerName, sender);
+			runnable = new LocatorAsyncCall(playerName, sender);
 		}else{
-			runnable = new LocatorRunnable(playerName, sender);
+			runnable = new LocatorAsyncCall(playerName, sender);
 		}
 		server.getScheduler().scheduleAsyncDelayedTask(this, runnable);
 	}
