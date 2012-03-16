@@ -4,6 +4,7 @@ Features:
 Looks up a player's location via their IP address
 
 Change Log
+	V1.0.3: Updated for thread saftey
     V1.0.2: Initial public release, what you see is what you get. 
 
 Command
